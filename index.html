@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testy – Szkielety programistyczne</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>🧪 Testy – Szkielety programistyczne</h1>
+      <p class="subtitle">Losowe testy z bazy pytań. Aplikacja pamięta przerobione pytania.</p>
+    </header>
+
+    <!-- EKRAN STARTOWY -->
+    <section id="screen-home" class="screen">
+      <div class="card stats-card">
+        <div class="stat">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">wszystkich pytań</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-used">0</span>
+          <span class="stat-label">przerobionych</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value" id="stat-remaining">0</span>
+          <span class="stat-label">dostępnych</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="progress-bar" title="Postęp przerobionych pytań">
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div id="slider-wrap">
+          <label for="count-slider" class="slider-label">
+            Liczba pytań w teście: <strong id="count-value">10</strong>
+          </label>
+          <input type="range" id="count-slider" min="1" max="10" value="10" />
+          <div class="slider-ends">
+            <span>1</span>
+            <span id="slider-max">10</span>
+          </div>
+
+          <div class="quick-buttons" id="quick-buttons"></div>
+        </div>
+
+        <p id="empty-pool-msg" class="empty-msg hidden">
+          🎉 Wszystkie pytania zostały już przerobione! Zresetuj pulę, aby zacząć od nowa.
+        </p>
+
+        <div class="actions">
+          <button id="btn-start" class="btn btn-primary">▶ Rozpocznij test</button>
+          <button id="btn-reset" class="btn btn-ghost">↻ Resetuj pulę pytań</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- EKRAN TESTU -->
+    <section id="screen-quiz" class="screen hidden">
+      <div class="quiz-header card">
+        <span id="quiz-progress-text">Pytanie 1 z 10</span>
+        <button id="btn-abort" class="btn btn-ghost btn-small">✕ Przerwij</button>
+      </div>
+      <form id="quiz-form"></form>
+      <div class="actions">
+        <button id="btn-submit" class="btn btn-primary">✓ Zakończ i sprawdź</button>
+      </div>
+    </section>
+
+    <!-- EKRAN WYNIKÓW -->
+    <section id="screen-results" class="screen hidden">
+      <div class="card result-summary">
+        <div class="result-score" id="result-score">0 / 0</div>
+        <div class="result-percent" id="result-percent">0%</div>
+        <div class="result-note" id="result-note"></div>
+      </div>
+      <div id="results-review"></div>
+      <div class="actions">
+        <button id="btn-new-test" class="btn btn-primary">▶ Nowy test</button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span id="footer-note"></span>
+    </footer>
+  </div>
+
+  <!-- Okno potwierdzenia resetu -->
+  <div id="confirm-overlay" class="overlay hidden">
+    <div class="modal card">
+      <h3>Zresetować pulę pytań?</h3>
+      <p>Wszystkie pytania znów staną się dostępne do losowania. Tej operacji nie można cofnąć.</p>
+      <div class="actions">
+        <button id="confirm-yes" class="btn btn-danger">Tak, resetuj</button>
+        <button id="confirm-no" class="btn btn-ghost">Anuluj</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
