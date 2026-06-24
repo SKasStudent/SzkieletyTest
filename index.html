@@ -63,11 +63,17 @@
     <section id="screen-quiz" class="screen hidden">
       <div class="quiz-header card">
         <span id="quiz-progress-text">Pytanie 1 z 10</span>
+        <span id="quiz-score" class="quiz-score">✔ 0</span>
         <button id="btn-abort" class="btn btn-ghost btn-small">✕ Przerwij</button>
       </div>
+      <div class="quiz-progress-bar">
+        <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+      </div>
       <form id="quiz-form"></form>
+      <div id="quiz-feedback" class="feedback hidden"></div>
       <div class="actions">
-        <button id="btn-submit" class="btn btn-primary">✓ Zakończ i sprawdź</button>
+        <button id="btn-confirm" class="btn btn-primary" disabled>✓ Potwierdź</button>
+        <button id="btn-next" class="btn btn-primary hidden">Następne pytanie →</button>
       </div>
     </section>
 
